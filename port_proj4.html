@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FitLife – Portfolio Project</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --lime: #7ED957;
+      --charcoal: #2B2B2B;
+      --white: #FFFFFF;
+      --gray: #6f6f6f;
+      --light-bg: #f7f8f7;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--light-bg);
+      color: var(--charcoal);
+      line-height: 1.65;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    section {
+      padding: 80px 8%;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      border-radius: 14px;
+    }
+
+    /* ---------------- HERO ---------------- */
+    .hero {
+      background: linear-gradient(135deg, #ffffff, #eafff0);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(126,217,87,0.35), transparent 60%);
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      max-width: 520px;
+      color: var(--gray);
+    }
+
+    .hero img {
+      box-shadow: 0 30px 60px rgba(0,0,0,0.18);
+      transition: transform 0.5s ease;
+    }
+
+    .hero img:hover {
+      transform: scale(1.04);
+    }
+
+    /* ---------------- OVERVIEW ---------------- */
+    .overview {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      background: var(--white);
+    }
+
+    .overview h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+
+    .overview p {
+      color: var(--gray);
+    }
+
+    /* ---------------- SOLUTION ---------------- */
+    .solution h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 50px;
+    }
+
+    .solution-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .solution ul {
+      list-style: none;
+    }
+
+    .solution li {
+      margin-bottom: 18px;
+      padding-left: 28px;
+      position: relative;
+      color: var(--gray);
+    }
+
+    .solution li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: var(--lime);
+      font-weight: 700;
+    }
+
+
+
+    .solution-images img {
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .solution-images img:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    /* ---------------- FEATURES ---------------- */
+    .features {
+      background: var(--white);
+    }
+
+    .features h2 {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+    }
+
+    .feature-card {
+      padding: 30px;
+      border-radius: 16px;
+      border: 1px solid rgba(126,217,87,0.35);
+      background: #fbfffb;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+
+    .feature-card span {
+      display: block;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+    }
+
+    /* ---------------- SERVICES ---------------- */
+    .services h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .service-badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .badge {
+      padding: 10px 24px;
+      border-radius: 30px;
+      background: rgba(126,217,87,0.2);
+      border: 1px solid var(--lime);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* ---------------- RESULTS ---------------- */
+    .results {
+      background: var(--white);
+    }
+
+    .results h2 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .result-card {
+      padding: 28px;
+      border-left: 4px solid var(--lime);
+      background: #f9fdf9;
+      border-radius: 10px;
+      color: var(--gray);
+    }
+
+    /* ---------------- CTA ---------------- */
+    .cta {
+      text-align: center;
+      background: linear-gradient(135deg, #eafff0, #ffffff);
+    }
+
+    .cta h2 {
+      font-size: 2.4rem;
+      margin-bottom: 25px;
+    }
+
+    .cta a {
+      display: inline-block;
+      padding: 14px 40px;
+      background: var(--lime);
+      color: #1a1a1a;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 40px;
+      transition: all 0.3s ease;
+    }
+
+    .cta a:hover {
+      background: #6bc94b;
+      transform: translateY(-3px);
+    }
+
+    /* ---------------- RESPONSIVE ---------------- */
+    @media (max-width: 900px) {
+      .hero-content,
+      .overview,
+      .solution-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+    }
+   /* --- Header --- */
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem; position: sticky; top: 0; background-color: inherit; z-index: 1000;
+    }
+    .logo img { height: 50px; }
+    nav { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+    nav a { font-weight: 500; transition: color 0.2s; }
+    nav a:hover { color: var(--gold); }
+    .cta-header { background-color: var(--gold); color: var(--black); padding: 0.5rem 1rem; border-radius: 5px; font-weight: 500; }
+
+  </style>
+</head>
+<body>
+
+  <header>
+  <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="packages.html">Packages</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="cta-header">Start Your Project</a>
+          </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div>
+        <h1>FitLife – Health & Fitness E-Commerce Website</h1>
+        <p>Engaging, dynamic, and easy-to-navigate online store for fitness enthusiasts.</p>
+      </div>
+      <img src="assets/fl logo.png" alt="Fitness E-Commerce Website"" alt="FitLife Hero">
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="overview">
+    <div>
+      <h2>Project Overview</h2>
+      <p>
+        FitLife required an e-commerce platform to sell health and fitness products online.
+        The goal was to create an engaging, intuitive shopping experience aligned with their
+        energetic brand identity while driving conversions.
+      </p>
+    </div>
+    <img src="https://via.placeholder.com/560x380?text=Fitness+Product+Mockup" alt="Overview Image">
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="solution">
+    <h2>Solution & Approach</h2>
+    <div class="solution-grid">
+      <ul>
+        <li>Designed a vibrant interface reflecting the fitness lifestyle.</li>
+        <li>Implemented intuitive product categories and filtering.</li>
+        <li>Optimized checkout flow for fast, frictionless purchases.</li>
+        <li>Ensured responsive performance across all devices.</li>
+      </ul>
+      <div class="solution-images">
+        <img src="assets/fl checkout.png" alt="">
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <h2>Key Features</h2>
+    <div class="feature-cards">
+      <div class="feature-card">
+        <span>Interactive Product Gallery</span>
+        Hover effects with clear pricing and CTAs.
+      </div>
+      <div class="feature-card">
+        <span>Smooth Checkout Flow</span>
+        Optimized cart and purchase experience.
+      </div>
+      <div class="feature-card">
+        <span>Category Filtering</span>
+        Easy navigation for faster product discovery.
+      </div>
+      <div class="feature-card">
+        <span>Mobile-First Design</span>
+        Fast-loading pages across all devices.
+      </div>
+      <div class="feature-card">
+        <span>Promotional Banners</span>
+        Highlight featured products and offers.
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services">
+    <h2>Services Applied</h2>
+    <div class="service-badges">
+      <div class="badge">Web Design</div>
+      <div class="badge">Domain Setup</div>
+      <div class="badge">SEO Basics</div>
+      <div class="badge">Copywriting</div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="results">
+    <h2>Results & Impact</h2>
+    <div class="results-grid">
+      <div class="result-card">
+        Enhanced user engagement and product discoverability.
+      </div>
+      <div class="result-card">
+        Increased conversions through intuitive UX and layout.
+      </div>
+      <div class="result-card">
+        Strengthened brand identity within the fitness market.
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Do you want Your own Full FitLife Store</h2>
+    <a href="contact.html">Contact Us</a>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elevate Consulting – Portfolio Project</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #1D3557;
+      --sky: #A8DADC;
+      --white: #FFFFFF;
+      --gray: #6b7280;
+      --light-bg: #f5f7fa;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--light-bg);
+      color: var(--navy);
+      line-height: 1.65;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    section {
+      padding: 80px 8%;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      border-radius: 10px;
+    }
+
+    /* ---------------- HERO ---------------- */
+    .hero {
+      background: linear-gradient(135deg, var(--navy), #14253f);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(168,218,220,0.25), transparent 60%);
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 520px;
+      color: #e5eef1;
+    }
+
+    .hero img {
+      box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---------------- OVERVIEW ---------------- */
+    .overview {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      background: var(--white);
+    }
+
+    .overview h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+
+    .overview p {
+      color: var(--gray);
+    }
+
+    /* ---------------- SOLUTION ---------------- */
+    .solution h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 50px;
+    }
+
+    .solution-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .solution ul {
+      list-style: none;
+    }
+
+    .solution li {
+      margin-bottom: 18px;
+      padding-left: 26px;
+      position: relative;
+      color: var(--gray);
+    }
+
+    .solution li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: var(--sky);
+      font-weight: 600;
+    }
+
+  
+
+    /* ---------------- FEATURES ---------------- */
+    .features {
+      background: var(--white);
+    }
+
+    .features h2 {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+    }
+  /* --- Header --- */
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem; position: sticky; top: 0; background-color: inherit; z-index: 1000;
+    }
+    .logo img { height: 50px; }
+    nav { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+    nav a { font-weight: 500; transition: color 0.2s; }
+    nav a:hover { color: var(--gold); }
+    .cta-header { background-color: var(--gold); color: var(--black); padding: 0.5rem 1rem; border-radius: 5px; font-weight: 500; }
+
+    /* ---------------- HERO ---------------- */
+    .feature-card {
+      padding: 30px;
+      border-radius: 14px;
+      border: 1px solid rgba(29,53,87,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: #fafbfd;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+
+    .feature-card span {
+      display: block;
+      color: var(--navy);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    /* ---------------- SERVICES ---------------- */
+    .services h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .service-badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .badge {
+      padding: 10px 22px;
+      border-radius: 30px;
+      background: rgba(168,218,220,0.25);
+      border: 1px solid var(--sky);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--navy);
+    }
+
+    /* ---------------- RESULTS ---------------- */
+    .results {
+      background: var(--white);
+    }
+
+    .results h2 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+    }
+
+    .result-card {
+      padding: 28px;
+      border-left: 4px solid var(--sky);
+      background: #f9fbfc;
+      border-radius: 8px;
+      color: var(--gray);
+    }
+
+    /* ---------------- CTA ---------------- */
+    .cta {
+      text-align: center;
+      background: linear-gradient(135deg, #eaf6f7, #ffffff);
+    }
+
+    .cta h2 {
+      font-size: 2.3rem;
+      margin-bottom: 25px;
+    }
+
+    .cta a {
+      display: inline-block;
+      padding: 14px 38px;
+      background: var(--sky);
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 40px;
+      transition: all 0.3s ease;
+    }
+
+    .cta a:hover {
+      background: #8ecfd3;
+      transform: translateY(-3px);
+    }
+
+    /* ---------------- RESPONSIVE ---------------- */
+    @media (max-width: 900px) {
+      .hero-content,
+      .overview,
+      .solution-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="assets/logo-light.png" alt="We Design by SR Logo" id="logo">
+    </div>
+  <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="packages.html">Packages</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="cta-header">Start Your Project</a>
+          </nav>
+  </header>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div>
+        <h1>Elevate Consulting – Corporate Website Design</h1>
+        <p>Modern, professional, and credibility-focused web presence.</p>
+      </div>
+      <img src="assets/ev logo.png" alt="Elevate Consulting Hero">
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="overview">
+    <div>
+      <h2>Project Overview</h2>
+      <p>
+        Elevate Consulting required a modern corporate website that reflects their credibility
+        and expertise. The objective was to attract potential clients, clearly present services,
+        and establish trust through a professional and structured digital presence.
+      </p>
+    </div>
+    <img src="assets/ev logo.png" alt="Overview Image">
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="solution">
+    <h2>Solution & Approach</h2>
+    <div class="solution-grid">
+      <ul>
+        <li>Designed a clean, corporate layout aligned with industry standards.</li>
+        <li>Optimized navigation for fast access to services and company information.</li>
+        <li>Integrated responsive design across all screen sizes.</li>
+        <li>Strengthened brand identity using consistent colour and typography.</li>
+      </ul>
+      <div class="solution-images">
+        <img src="assets/ev layout.png" alt="">
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <h2>Key Features</h2>
+    <div class="feature-cards">
+      <div class="feature-card">
+        <span>Professional Typography</span>
+        Clear hierarchy for corporate readability.
+      </div>
+      <div class="feature-card">
+        <span>Structured Navigation</span>
+        Concise access to services and information.
+      </div>
+      <div class="feature-card">
+        <span>Lead-Focused Contact Forms</span>
+        Designed to convert visitors into clients.
+      </div>
+      <div class="feature-card">
+        <span>SEO Foundations</span>
+        Optimized structure for better visibility.
+      </div>
+      <div class="feature-card">
+        <span>Responsive Design</span>
+        Seamless experience across all devices.
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services">
+    <h2>Services Applied</h2>
+    <div class="service-badges">
+      <div class="badge">Web Design</div>
+      <div class="badge">Copywriting</div>
+      <div class="badge">SEO Basics</div>
+      <div class="badge">Domain Setup</div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="results">
+    <h2>Results & Impact</h2>
+    <div class="results-grid">
+      <div class="result-card">
+        Website now communicates professionalism and credibility.
+      </div>
+      <div class="result-card">
+        Improved engagement through clear information hierarchy.
+      </div>
+      <div class="result-card">
+        Enhanced mobile accessibility and overall user experience.
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Create Your own Corporate Experience</h2>
+    <a href="contact.html">Contact Us</a>
+  </section>
+
+</body>
+</html>

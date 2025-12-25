@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ | We Design by SR</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* --- Root Variables --- */
+    :root {
+      --gold: #FFD700;
+      --white: #FFFFFF;
+      --black: #000000;
+      --light-bg: #FFFFFF;
+      --dark-bg: #0D0D0D;
+      --light-text: #000000;
+      --dark-text: #FFFFFF;
+      --primary-font: 'Playfair Display', serif;
+      --secondary-font: 'Roboto', sans-serif;
+    }
+
+    body.dark { background-color: var(--dark-bg); color: var(--dark-text); }
+    body.light { background-color: var(--light-bg); color: var(--light-text); }
+    body { margin: 0; font-family: var(--secondary-font); transition: background-color 0.3s, color 0.3s; }
+
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; font-family: var(--secondary-font); }
+
+    /* --- Header --- */
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem; position: sticky; top: 0; background-color: inherit; z-index: 1000;
+    }
+    .logo img { height: 50px; }
+    nav { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+    nav a { font-weight: 500; transition: color 0.2s; }
+    nav a:hover { color: var(--gold); }
+    .cta-header { background-color: var(--gold); color: var(--black); padding: 0.5rem 1rem; border-radius: 5px; font-weight: 500; }
+    .mode-toggle { font-size: 1.2rem; margin-left: 1rem; cursor: pointer; }
+
+    /* --- Hero Section --- */
+    .hero {
+      text-align: center; padding: 6rem 2rem 4rem;
+      background: linear-gradient(135deg, rgba(255,215,0,0.05), transparent);
+      position: relative; overflow: hidden;
+    }
+    .hero h1 { font-family: var(--primary-font); font-size: 2.5rem; margin-bottom: 1rem; }
+    .hero p { font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .hero span { font-size: 1rem; color: rgba(0,0,0,0.6); }
+    .hero::before, .hero::after {
+      content: ''; position: absolute; border-radius: 50%; opacity: 0.1;
+    }
+    .hero::before { width: 200px; height: 200px; background: var(--gold); top: 10%; left: 5%; animation: float 6s ease-in-out infinite alternate; }
+    .hero::after { width: 150px; height: 150px; background: var(--gold); bottom: 15%; right: 10%; animation: float 8s ease-in-out infinite alternate-reverse; }
+    @keyframes float { 0% { transform: translateY(0px) rotate(0deg); } 100% { transform: translateY(20px) rotate(15deg); } }
+
+    /* --- FAQ Section --- */
+    .faq { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
+    .faq h2 { font-family: var(--primary-font); font-size: 2rem; text-align: center; margin-bottom: 1rem; }
+    .faq p { text-align: center; margin-bottom: 3rem; font-size: 1.1rem; color: rgba(0,0,0,0.7); }
+
+    .accordion-item { border-bottom: 1px solid rgba(0,0,0,0.1); }
+    .accordion-title {
+      padding: 1rem; cursor: pointer; position: relative; font-weight: 500; transition: background-color 0.3s;
+    }
+    .accordion-title:hover { background-color: rgba(255,215,0,0.05); }
+    .accordion-title::after {
+      content: '+'; position: absolute; right: 1rem; transition: transform 0.3s;
+    }
+    .accordion-title.active::after { content: '−'; }
+
+    .accordion-content {
+      max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease;
+      padding: 0 1rem;
+      font-size: 1rem; line-height: 1.6;
+    }
+    .accordion-content p { margin: 0.75rem 0; }
+
+    /* --- CTA Section --- */
+    .cta-section {
+      text-align: center; padding: 6rem 2rem; background-color: rgba(255,215,0,0.05);
+    }
+    .cta-section h2 { font-family: var(--primary-font); font-size: 2rem; margin-bottom: 1rem; }
+    .cta-section p { font-size: 1.1rem; margin-bottom: 1.5rem; }
+    .cta-section button { background-color: var(--gold); color: var(--black); padding: 1rem 2rem; border-radius: 5px; font-weight: 500; }
+
+    /* WhatsApp Button */
+    .whatsapp-btn {
+      position: fixed; bottom: 20px; right: 20px; background-color: var(--gold); color: var(--black);
+      border-radius: 50%; width: 60px; height: 60px; display: flex; justify-content: center; align-items: center;
+      font-size: 1.5rem; box-shadow: 0 4px 8px rgba(0,0,0,0.2); z-index: 1000; transition: transform 0.2s;
+    }
+    .whatsapp-btn:hover { transform: scale(1.1); }
+
+    /* Footer */
+    footer { text-align: center; padding: 2rem; font-size: 0.9rem; background-color: inherit; }
+
+  </style>
+</head>
+<body class="light">
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="assets/logo-light.png" alt="We Design by SR Logo" id="logo">
+    </div>
+  <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="packages.html">Packages</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="cta-header">Start Your Project</a>
+      
+        <span class="mode-toggle" id="mode-toggle">🌙</span>
+    </nav>
+  </header>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Frequently Asked Questions</h1>
+    <p>Everything You Need to Know Before Starting Your Project</p>
+    <span>Clear answers to help you make confident decisions.</span>
+  </section>
+
+  <!-- FAQ Accordion Section -->
+  <section class="faq">
+
+    <!-- General Questions -->
+    <div class="accordion-item">
+      <div class="accordion-title">What services do you offer?</div>
+      <div class="accordion-content">
+        <p>I offer comprehensive digital solutions including web design, web redesign, SEO optimization, website maintenance, event pages, AI (ChatGPT) optimization, branding, copywriting, and social media management.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-title">Do you work with small businesses or startups?</div>
+      <div class="accordion-content">
+        <p>Yes. I work with startups, small businesses, and growing brands looking for a professional, elegant online presence.</p>
+      </div>
+    </div>
+
+    <!-- Pricing & Packages -->
+    <div class="accordion-item">
+      <div class="accordion-title">How much does a website cost?</div>
+      <div class="accordion-content">
+        <p>Pricing depends on the scope and complexity of the project. Packages start from R1,500, with custom solutions available for more advanced needs.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-title">Do you offer custom packages?</div>
+      <div class="accordion-content">
+        <p>Absolutely. If none of the listed packages fit your needs, a custom package can be created specifically for your project.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-title">Are there monthly fees?</div>
+      <div class="accordion-content">
+        <p>Monthly fees only apply to services like website maintenance or social media management. One-time projects are billed once.</p>
+      </div>
+    </div>
+
+    <!-- Process & Timeline -->
+    <div class="accordion-item">
+      <div class="accordion-title">How long does a project take?</div>
+      <div class="accordion-content">
+        <p>Timelines vary by project, but most websites are completed within 2–4 weeks, depending on requirements and feedback.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-title">What do you need from me to get started?</div>
+      <div class="accordion-content">
+        <p>Once you choose a package, I’ll request content, brand assets (if available), and a brief to ensure the project aligns with your vision.</p>
+      </div>
+    </div>
+
+    <!-- Domains, Hosting & Maintenance -->
+    <div class="accordion-item">
+      <div class="accordion-title">Do you help with domain purchase?</div>
+      <div class="accordion-content">
+        <p>Yes. I assist with domain purchase and setup to ensure everything is configured correctly.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-title">Do you provide hosting?</div>
+      <div class="accordion-content">
+        <p>Hosting can be arranged or integrated with your preferred provider, depending on your needs.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-title">Will you maintain my website after launch?</div>
+      <div class="accordion-content">
+        <p>Yes. Website maintenance packages are available to keep your site secure, updated, and performing optimally.</p>
+      </div>
+    </div>
+
+    <!-- Support & Revisions -->
+    <div class="accordion-item">
+      <div class="accordion-title">Do you offer revisions?</div>
+      <div class="accordion-content">
+        <p>Yes. Each project includes a set number of revisions, depending on the package selected.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-title">What happens after the website is launched?</div>
+      <div class="accordion-content">
+        <p>You’ll receive post-launch support, and optional maintenance plans are available for ongoing care.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <h2>Still Have Questions?</h2>
+    <p>Let’s talk about your project and find the right solution for you.</p>
+    <button>Start Your Project</button>
+  </section>
+
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/27617957689" target="_blank" class="whatsapp-btn" aria-label="Chat on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12.04 2C6.48 2 2 6.48 2 12c0 2.1.55 4.08 1.5 5.79L2 22l4.35-1.45C8 21.45 10.88 22 12.98 22c5.52 0 10-4.48 10-10S17.56 2 12.04 2zm5.6 13.14c-.23.64-1.36 1.23-1.87 1.31-.48.07-1.08.1-2.25-.42-1.05-.47-1.72-.83-2.55-1.53-.92-.79-1.54-1.73-1.72-2-.18-.28-1.47-1.74-1.47-3.3 0-1.55.83-2.31 1.12-2.61.3-.29.65-.36.86-.36.22 0 .44 0 .63.01.2.01.46-.08.71.54.25.63.85 2.17.92 2.33.07.15.11.33.02.53-.08.18-.12.3-.24.46-.12.15-.26.33-.38.44-.13.11-.26.24-.12.46.14.22.62 1.02 1.33 1.64.92.85 1.69 1.11 1.96 1.23.28.12.44.1.6-.06.16-.16.63-.73.8-.98.17-.24.35-.2.59-.12.24.08 1.5.71 1.76.84.26.13.43.2.49.32.06.12.06.7-.17 1.34z"/>
+    </svg>
+  </a>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 We Design by SR. All Rights Reserved.
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('mode-toggle');
+    const body = document.body;
+    const logo = document.getElementById('logo');
+    toggle.addEventListener('click', () => {
+      if(body.classList.contains('light')) {
+        body.classList.replace('light','dark');
+        toggle.textContent = '☀️';
+        logo.src = 'assets/logo-dark.png';
+      } else {
+        body.classList.replace('dark','light');
+        toggle.textContent = '🌙';
+        logo.src = 'assets/logo-light.png';
+      }
+    });
+
+    // Accordion functionality
+    const accordions = document.querySelectorAll('.accordion-title');
+    accordions.forEach(title => {
+      title.addEventListener('click', () => {
+        const content = title.nextElementSibling;
+        const isActive = title.classList.contains('active');
+        if(isActive){
+          title.classList.remove('active');
+          content.style.maxHeight = null;
+        } else {
+          accordions.forEach(t => {
+            t.classList.remove('active');
+            t.nextElementSibling.style.maxHeight = null;
+          });
+          title.classList.add('active');
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Spark Interactive – Experimental Website Design</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --electric-blue: #00BFFF;
+      --neon-pink: #FF6EC7;
+      --black: #111111;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    section {
+      padding: 5rem 8%;
+    }
+
+    h1, h2, h3 {
+      font-weight: 800;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      color: #cccccc;
+    }
+
+    /* ---------------- HERO ---------------- */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4rem;
+      background: radial-gradient(circle at top left, rgba(0,191,255,0.25), transparent 40%),
+                  radial-gradient(circle at bottom right, rgba(255,110,199,0.25), transparent 40%);
+    }
+
+    .hero-text {
+      max-width: 600px;
+    }
+
+    .hero-text h1 {
+      font-size: 3.5rem;
+      background: linear-gradient(90deg, var(--electric-blue), var(--neon-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .hero-visual {
+      width: 420px;
+      height: 420px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--electric-blue), var(--neon-pink));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero-visual span {
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--black);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* ---------------- SPLIT SECTIONS ---------------- */
+    .split {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .mock {
+      height: 280px;
+      border-radius: 16px;
+      background: linear-gradient(120deg, #1a1a1a, #222);
+      border: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mock::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(0,191,255,0.25), transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    /* ---------------- FEATURES ---------------- */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: #161616;
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255,110,199,0.15), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+
+    .feature-card:hover::before {
+      opacity: 1;
+    }
+
+    .feature-card h3 {
+      color: var(--electric-blue);
+      margin-bottom: 0.8rem;
+    }
+
+    /* ---------------- SERVICES ---------------- */
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .badge {
+      padding: 0.6rem 1.4rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      background: linear-gradient(90deg, var(--electric-blue), var(--neon-pink));
+      color: var(--black);
+    }
+
+    /* ---------------- RESULTS ---------------- */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+
+    .result-box {
+      background: #161616;
+      border-radius: 16px;
+      padding: 2rem;
+      border-left: 4px solid var(--neon-pink);
+    }
+
+    /* ---------------- CTA ---------------- */
+    .cta {
+      text-align: center;
+      background: linear-gradient(135deg, rgba(0,191,255,0.15), rgba(255,110,199,0.15));
+      border-radius: 24px;
+      padding: 4rem 2rem;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 1rem 3rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--black);
+      background: var(--electric-blue);
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .cta a:hover {
+      background: #009edb;
+      transform: scale(1.05);
+    }
+
+    /* ---------------- RESPONSIVE ---------------- */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-visual {
+        width: 300px;
+        height: 300px;
+      }
+
+      h1 {
+        font-size: 2.8rem;
+      }
+    }
+   /* --- Header --- */
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem; position: sticky; top: 0; background-color: inherit; z-index: 1000;
+    }
+    .logo img { height: 50px; }
+    nav { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+    nav a { font-weight: 500; transition: color 0.2s; }
+    nav a:hover { color: var(--gold); }
+    .cta-header { background-color: var(--gold); color: var(--black); padding: 0.5rem 1rem; border-radius: 5px; font-weight: 500; }
+
+  </style>
+</head>
+<body>
+
+  <header>
+  <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="packages.html">Packages</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="cta-header">Start Your Project</a>
+          </nav>
+  </header>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Spark Interactive</h1>
+      <p>Innovative, dynamic, and highly interactive web experience.</p>
+    </div>
+    <div class="hero-visual">
+      <span>⚡</span>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section>
+    <div class="split">
+      <div>
+        <h2>Project Overview</h2>
+        <p>
+          Spark Interactive aimed to create a concept website that pushed creative boundaries
+          while showcasing technical expertise. The goal was to demonstrate experimental layouts,
+          bold visuals, and engaging interactions that stand out in a competitive digital space.
+        </p>
+      </div>
+      <div class="mock"></div>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section>
+    <div class="split">
+      <div class="mock"></div>
+      <div>
+        <h2>Solution & Approach</h2>
+        <p>
+          We designed an experimental interface combining micro-interactions, hover animations,
+          and scroll-driven motion. High-contrast colours and bold typography were used to highlight
+          innovation while maintaining usability and responsiveness across devices.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section>
+    <h2>Key Features</h2>
+    <div class="features">
+      <div class="feature-card">
+        <h3>Micro-Interactions</h3>
+        <p>Hover effects and motion feedback enhance user engagement.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Scroll Animations</h3>
+        <p>Dynamic elements respond as users explore the site.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Experimental Layouts</h3>
+        <p>Creative, non-traditional structures designed to inspire.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Responsive Design</h3>
+        <p>Optimized for desktop, tablet, and mobile without losing impact.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section>
+    <h2>Services Applied</h2>
+    <div class="services">
+      <span class="badge">Web Design</span>
+      <span class="badge">UI / UX Design</span>
+      <span class="badge">Interactive Animations</span>
+      <span class="badge">Branding</span>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section>
+    <h2>Results & Impact</h2>
+    <div class="results-grid">
+      <div class="result-box">
+        <p>Showcased cutting-edge interactive and experimental design capabilities.</p>
+      </div>
+      <div class="result-box">
+        <p>Highlighted both creative vision and technical skill for future clients.</p>
+      </div>
+      <div class="result-box">
+        <p>Increased user engagement through dynamic visuals and motion.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Have Your Own Experience</h2>
+    <a href="contact.html">Contact Us</a>
+  </section>
+
+</body>
+</html>

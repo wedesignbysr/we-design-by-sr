@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>We Design by SR</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* --- Root Variables --- */
+    :root {
+      --gold: #FFD700;
+      --white: #FFFFFF;
+      --black: #000000;
+      --light-bg: #FFFFFF;
+      --dark-bg: #0D0D0D;
+      --light-text: #000000;
+      --dark-text: #FFFFFF;
+      --primary-font: 'Playfair Display', serif;
+      --secondary-font: 'Roboto', sans-serif;
+    }
+
+    /* --- Dark Mode Variables --- */
+    body.dark {
+      background-color: var(--dark-bg);
+      color: var(--dark-text);
+    }
+    body.light {
+      background-color: var(--light-bg);
+      color: var(--light-text);
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--secondary-font);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      font-family: var(--secondary-font);
+    }
+
+    /* --- Header --- */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      background-color: inherit;
+      z-index: 1000;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    nav a {
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    .cta-header {
+      background-color: var(--gold);
+      color: var(--black);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+
+    .mode-toggle {
+      font-size: 1.2rem;
+      margin-left: 1rem;
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+    }
+
+    .hero h1 {
+      font-family: var(--primary-font);
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hero .cta-buttons button {
+      padding: 0.8rem 2rem;
+      border-radius: 5px;
+      font-weight: 500;
+      transition: transform 0.2s;
+    }
+
+    .hero .primary {
+      background-color: var(--gold);
+      color: var(--black);
+    }
+
+    .hero .secondary {
+      background-color: transparent;
+      color: inherit;
+      border: 2px solid var(--gold);
+    }
+
+    .hero .cta-buttons button:hover {
+      transform: scale(1.05);
+    }
+
+    /* --- About Snippet --- */
+    .about {
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .about p {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+
+    .about button {
+      background-color: var(--gold);
+      color: var(--black);
+      padding: 0.7rem 1.5rem;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+
+    /* --- Services Highlights --- */
+    .services {
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .service-cards {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .service-card {
+      background-color: rgba(255, 215, 0, 0.1);
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 250px;
+      transition: transform 0.2s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .services .explore-btn {
+      margin-top: 3rem;
+      background-color: var(--gold);
+      color: var(--black);
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      border-radius: 5px;
+    }
+
+    /* --- Portfolio Preview --- */
+    .portfolio {
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .portfolio-cards {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .portfolio-card {
+      max-width: 300px;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: rgba(255, 215, 0, 0.05);
+      padding: 1rem;
+    }
+
+    .portfolio button {
+      margin-top: 2rem;
+      background-color: var(--gold);
+      color: var(--black);
+      padding: 0.8rem 2rem;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+
+    /* --- CTA Section --- */
+    .cta-section {
+      text-align: center;
+      padding: 6rem 2rem;
+      background-color: rgba(255, 215, 0, 0.05);
+    }
+
+    .cta-section h2 {
+      font-family: var(--primary-font);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section button {
+      background-color: var(--gold);
+      color: var(--black);
+      padding: 1rem 2rem;
+      border-radius: 5px;
+      font-weight: 500;
+      margin-top: 1rem;
+    }
+
+/* --- Floating WhatsApp Button --- */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--gold);
+  color: var(--black);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+  transition: transform 0.2s;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.1);
+}
+
+
+    /* --- Footer --- */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      background-color: inherit;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+      .service-cards, .portfolio-cards {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="light">
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="assets/logo-light.png" alt="We Design by SR Logo" id="logo">
+    </div>
+  <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="packages.html">Packages</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="cta-header">Start Your Project</a>
+      
+        <span class="mode-toggle" id="mode-toggle">🌙</span>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>We Design by SR – Where Elegance Meets Innovation</h1>
+    <p>Creating bespoke websites and digital experiences that elevate your brand.</p>
+<div class="cta-buttons">
+  <a href="portfolio.html" class="btn primary">View Portfolio</a>
+  <a href="contact.html" class="btn secondary">Get a Quote</a>
+</div>
+
+  </section>
+
+  <!-- About Snippet -->
+  <section class="about">
+    <p>At We Design by SR, we craft elegant, bespoke websites that align with your brand's vision. Our philosophy is to combine aesthetic beauty with functional design, ensuring your digital presence stands out.</p>
+     <a href="about.html"  class="btn primary">Learn More About Me</a>
+  </section>
+
+  <!-- Services Highlights -->
+  <section class="services">
+    <h2>Our Key Services</h2>
+    <div class="service-cards">
+      <div class="service-card">
+        <h3>SEO Optimization</h3>
+        <p>Improve search visibility and rankings with tailored SEO strategies.</p>
+      </div>
+      <div class="service-card">
+        <h3>Web Redesign</h3>
+        <p>Refresh your website with modern, elegant design that converts.</p>
+      </div>
+      <div class="service-card">
+        <h3>Website Maintenance</h3>
+        <p>Keep your website secure, up-to-date, and performing optimally.</p>
+      </div>
+    </div>
+     <a href="services.html" class="explore-btn">Explore More</a>
+  </section>
+
+  <!-- Portfolio Preview -->
+  <section class="portfolio">
+    <h2>Portfolio Preview</h2>
+    <div class="portfolio-cards">
+      <div class="portfolio-card">
+        <p>CulinaryVibes – Food Influencer Website. A vibrant content hub built to showcase recipes, videos, and social media while strengthening personal brand identity.</p>
+      </div>
+      <div class="portfolio-card">
+        <p>Spark Interactive – Experimental WebsiteAn experimental, high-impact website showcasing cutting-edge interactivity, animations, and creative layouts.</p>
+      </div>
+      <div class="portfolio-card">
+        <p>Elevate Consulting – Corporate Website.A modern corporate website focused on clarity, credibility, and user experience for professional consulting services.</p>
+      </div>
+    </div>
+      <a href="portfolio.html"class="explore-btn"> View Full Portfolio</a>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <h2>Ready to Elevate Your Brand?</h2>
+    <p>Let’s create something exceptional together.</p>
+   <a href="contact.html"class="explore-btn"> Start Your Project</a>
+  </section>
+
+   <!-- WhatsApp Button -->
+<a href="https://wa.me/27617957689" target="_blank" class="whatsapp-btn" aria-label="Chat on WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M12.04 2C6.48 2 2 6.48 2 12c0 2.1.55 4.08 1.5 5.79L2 22l4.35-1.45C8 21.45 10.88 22 12.98 22c5.52 0 10-4.48 10-10S17.56 2 12.04 2zm5.6 13.14c-.23.64-1.36 1.23-1.87 1.31-.48.07-1.08.1-2.25-.42-1.05-.47-1.72-.83-2.55-1.53-.92-.79-1.54-1.73-1.72-2-.18-.28-1.47-1.74-1.47-3.3 0-1.55.83-2.31 1.12-2.61.3-.29.65-.36.86-.36.22 0 .44 0 .63.01.2.01.46-.08.71.54.25.63.85 2.17.92 2.33.07.15.11.33.02.53-.08.18-.12.3-.24.46-.12.15-.26.33-.38.44-.13.11-.26.24-.12.46.14.22.62 1.02 1.33 1.64.92.85 1.69 1.11 1.96 1.23.28.12.44.1.6-.06.16-.16.63-.73.8-.98.17-.24.35-.2.59-.12.24.08 1.5.71 1.76.84.26.13.43.2.49.32.06.12.06.7-.17 1.34z"/>
+  </svg>
+</a>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 We Design by SR. All Rights Reserved.
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('mode-toggle');
+    const body = document.body;
+    const logo = document.getElementById('logo');
+
+    toggle.addEventListener('click', () => {
+      if(body.classList.contains('light')) {
+        body.classList.replace('light', 'dark');
+        toggle.textContent = '☀️';
+        logo.src = 'assets/logo-light.png';
+      } else {
+        body.classList.replace('dark', 'light');
+        toggle.textContent = '🌙';
+        logo.src = 'assets/logo-dark.png';
+      }
+    });
+  </script>
+</body>
+</html>

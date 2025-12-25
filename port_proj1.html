@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LuxeBoutique – Portfolio Project</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold: #D4AF37;
+      --ivory: #FDF6F0;
+      --charcoal: #333333;
+      --soft-gray: #777;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--ivory);
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    section {
+      padding: 80px 8%;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      border-radius: 12px;
+    }
+    /* --- Header --- */
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem; position: sticky; top: 0; background-color: inherit; z-index: 1000;
+    }
+    .logo img { height: 50px; }
+    nav { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+    nav a { font-weight: 500; transition: color 0.2s; }
+    nav a:hover { color: var(--gold); }
+    .cta-header { background-color: var(--gold); color: var(--black); padding: 0.5rem 1rem; border-radius: 5px; font-weight: 500; }
+
+    /* ---------------- HERO ---------------- */
+    .hero {
+      position: relative;
+      background: linear-gradient(120deg, #fffaf4, #f5ead8);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(212,175,55,0.25), transparent 60%);
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--soft-gray);
+      max-width: 520px;
+    }
+
+    .hero img {
+      box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+    }
+
+    /* ---------------- OVERVIEW ---------------- */
+    .overview {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .overview h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+
+    /* ---------------- SOLUTION ---------------- */
+    .solution h2 {
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 2.2rem;
+    }
+
+    .solution-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .solution ul {
+      list-style: none;
+    }
+
+    .solution li {
+      margin-bottom: 18px;
+      padding-left: 26px;
+      position: relative;
+    }
+
+    .solution li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    .solution-images {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    /* ---------------- FEATURES ---------------- */
+    .features {
+      background: #fff;
+    }
+
+    .features h2 {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .feature-card {
+      padding: 30px;
+      border-radius: 16px;
+      border: 1px solid rgba(212,175,55,0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+
+    .feature-card span {
+      color: var(--gold);
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    /* ---------------- SERVICES ---------------- */
+    .services h2 {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .service-badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .badge {
+      padding: 10px 22px;
+      border-radius: 30px;
+      background: rgba(212,175,55,0.15);
+      border: 1px solid var(--gold);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* ---------------- BEFORE AFTER ---------------- */
+    .case-study h2 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .case-grid div {
+      border: 2px solid rgba(212,175,55,0.4);
+      padding: 10px;
+      border-radius: 14px;
+    }
+
+    /* ---------------- CTA ---------------- */
+    .cta {
+      text-align: center;
+      background: linear-gradient(120deg, #fffaf4, #f5ead8);
+    }
+
+    .cta h2 {
+      margin-bottom: 25px;
+      font-size: 2.3rem;
+    }
+
+    .cta a {
+      display: inline-block;
+      padding: 14px 36px;
+      background: var(--gold);
+      color: #000;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 40px;
+      transition: all 0.3s ease;
+    }
+
+    .cta a:hover {
+      background: #c4a130;
+      transform: translateY(-3px);
+    }
+
+    /* ---------------- RESPONSIVE ---------------- */
+    @media (max-width: 900px) {
+      .hero-content,
+      .overview,
+      .solution-grid,
+      .case-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="assets/logo-light.png" alt="We Design by SR Logo" id="logo">
+    </div>
+  <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="packages.html">Packages</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="cta-header">Start Your Project</a>
+          </nav>
+  </header>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div>
+        <h1>LuxeBoutique – High-End Fashion E-Commerce</h1>
+        <p>Luxury, elegance, and seamless online shopping.</p>
+      </div>
+      <img src="assets/lb logo.png" alt="LuxeBoutique Hero">
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="overview">
+    <div>
+      <h2>Project Overview</h2>
+      <p>
+        LuxeBoutique needed an online platform to showcase high-end fashion with a refined,
+        luxurious feel. The goal was to elevate brand perception, streamline the shopping
+        experience, and deliver an elegant digital journey for premium clientele.
+      </p>
+    </div>
+    <img src="assets/lb logo.png" alt="Project Overview Image">
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="solution">
+    <h2>Solution & Approach</h2>
+    <div class="solution-grid">
+      <ul>
+        <li>Conducted brand analysis to define a luxury-first aesthetic.</li>
+        <li>Designed clean, minimalist layouts highlighting products.</li>
+        <li>Implemented intuitive navigation for seamless shopping.</li>
+        <li>Ensured responsive design across all devices.</li>
+      </ul>
+      <div class="solution-images">
+        <img src="https://via.placeholder.com/300x220?text=Homepage" alt="">
+        <img src="https://via.placeholder.com/300x220?text=Product+Page" alt="">
+        <img src="https://via.placeholder.com/300x220?text=Checkout" alt="">
+        <img src="https://via.placeholder.com/300x220?text=Mobile+View" alt="">
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <h2>Key Features</h2>
+    <div class="feature-cards">
+      <div class="feature-card"><span>Elegant Typography</span><br>Luxury-focused visual hierarchy.</div>
+      <div class="feature-card"><span>Product Hover Effects</span><br>Smooth, refined interactions.</div>
+      <div class="feature-card"><span>Secure Checkout</span><br>Optimized e-commerce flow.</div>
+      <div class="feature-card"><span>Responsive Design</span><br>Mobile-friendly across all devices.</div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services">
+    <h2>Services Applied</h2>
+    <div class="service-badges">
+      <div class="badge">Web Design</div>
+      <div class="badge">Branding</div>
+      <div class="badge">UI / UX Design</div>
+      <div class="badge">Domain Setup</div>
+    </div>
+  </section>
+
+  <!-- BEFORE AFTER -->
+  <section class="case-study">
+    <h2>Before & After</h2>
+    <div class="case-grid">
+      <div>
+        <img src="assets/lb before.png" alt="">
+      </div>
+      <div>
+        <img src="assets/lb after.png" alt="">
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Create Your own Experience</h2>
+    <a href="contact.html">Contact us</a>
+  </section>
+
+</body>
+</html>
+

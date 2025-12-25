@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CulinaryVibes – Food Influencer Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --tomato: #FF6347;
+      --olive: #808000;
+      --cream: #FFF5E1;
+      --dark-gray: #333333;
+      --light-gray: #666666;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--cream);
+      color: var(--dark-gray);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+
+    section {
+      padding: 5rem 8%;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      border-radius: 14px;
+    }
+
+    /* ---------------- HERO ---------------- */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      color: var(--tomato);
+      margin-bottom: 1rem;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      color: var(--dark-gray);
+    }
+
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+
+    .hero-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(255,99,71,0.15), transparent);
+      pointer-events: none;
+    }
+
+    /* ---------------- SPLIT SECTIONS ---------------- */
+    .split {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      align-items: center;
+    }
+
+    /* ---------------- SOLUTION ---------------- */
+    .solution h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      color: var(--olive);
+    }
+
+    .solution-text p {
+      margin-bottom: 1rem;
+      color: var(--dark-gray);
+    }
+
+    .solution-images {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .solution-images img {
+      transition: transform 0.3s ease;
+    }
+
+    .solution-images img:hover {
+      transform: scale(1.05);
+    }
+
+    /* ---------------- FEATURES ---------------- */
+    .features {
+      margin-top: 3rem;
+    }
+
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: var(--cream);
+      border: 2px solid var(--tomato);
+      border-radius: 16px;
+      padding: 1.8rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+    }
+
+    .feature-card h3 {
+      color: var(--tomato);
+      margin-bottom: 0.8rem;
+    }
+
+    /* ---------------- SERVICES ---------------- */
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .badge {
+      padding: 0.6rem 1.4rem;
+      border-radius: 30px;
+      background-color: var(--olive);
+      color: var(--cream);
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    /* ---------------- RESULTS ---------------- */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .result-box {
+      background: #fff1e1;
+      border-left: 4px solid var(--tomato);
+      border-radius: 12px;
+      padding: 1.8rem;
+      color: var(--dark-gray);
+    }
+
+    /* ---------------- CTA ---------------- */
+    .cta {
+      text-align: center;
+      margin-top: 4rem;
+      padding: 3rem 2rem;
+      background-color: #fff2e6;
+      border-radius: 24px;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 1rem 2.5rem;
+      background-color: var(--tomato);
+      color: var(--cream);
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+
+    .cta a:hover {
+      background-color: #e5533e;
+      transform: translateY(-3px);
+    }
+
+    /* ---------------- RESPONSIVE ---------------- */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-image {
+        margin-top: 2rem;
+      }
+
+      h1 {
+        font-size: 2.4rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+    }
+/* --- Header --- */
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem; position: sticky; top: 0; background-color: inherit; z-index: 1000;
+    }
+    .logo img { height: 50px; }
+    nav { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+    nav a { font-weight: 500; transition: color 0.2s; }
+    nav a:hover { color: var(--gold); }
+    .cta-header { background-color: var(--gold); color: var(--black); padding: 0.5rem 1rem; border-radius: 5px; font-weight: 500; }
+
+  </style>
+</head>
+<body>
+
+  <header>
+  <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="packages.html">Packages</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="cta-header">Start Your Project</a>
+          </nav>
+  </header>
+
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>CulinaryVibes</h1>
+      <p>Deliciously designed to showcase recipes, videos, and social media content.</p>
+    </div>
+    <div class="hero-image">
+      <img src="assets/cv logo.png">
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section>
+    <div class="split">
+      <div>
+        <h2>Project Overview</h2>
+        <p>
+          CulinaryVibes needed a visually appealing website to highlight recipes, integrate social media feeds,
+          and reflect the influencer’s vibrant personality. The goal was to engage followers and centralize all content.
+        
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="solution">
+    <h2>Solution & Approach</h2>
+    <div class="split">
+      <div class="solution-text">
+        <p>Developed a visually appetizing layout that highlights recipes and video content.</p>
+        <p>Integrated social media feeds for Instagram and YouTube.</p>
+        <p>Optimized responsiveness for mobile, tablet, and desktop users.</p>
+        <p>Applied branding colours and typography to reflect a warm, approachable food persona.</p>
+      </div>
+      <div class="solution-images">
+        <img src="assets/recipe.png">
+      
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <h2>Key Features</h2>
+    <div class="feature-cards">
+      <div class="feature-card">
+        <h3>Recipe Gallery</h3>
+        <p>Visual display of recipes with step-by-step instructions.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Embedded Videos</h3>
+        <p>Cooking tutorials and influencer tips integrated into the site.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Social Integration</h3>
+        <p>Live Instagram feed and YouTube playlist display.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Responsive Design</h3>
+        <p>Optimized for all devices, from mobile to desktop.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Call-to-Actions</h3>
+        <p>Newsletter signups and sponsored content prompts.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section>
+    <h2>Services Applied</h2>
+    <div class="services">
+      <span class="badge">Web Design</span>
+      <span class="badge">Branding</span>
+      <span class="badge">Copywriting</span>
+      <span class="badge">Social Media Integration</span>
+      <span class="badge">UI/UX Design</span>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section>
+    <h2>Results & Impact</h2>
+    <div class="results-grid">
+      <div class="result-box">
+        Increased engagement and content visibility across social platforms.
+      </div>
+      <div class="result-box">
+        Centralized recipes, videos, and content for followers in one hub.
+      </div>
+      <div class="result-box">
+        Strengthened personal brand identity and aesthetic consistency.
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Do you want your own CulinaryVibes experience?</h2>
+
+    <a href="contact.html">Contact Us Today</a>
+  </section>
+
+</body>
+</html>
