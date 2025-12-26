@@ -125,11 +125,9 @@
   method="POST"
   data-netlify="true"
   netlify-honeypot="bot-field"
-  action="/thank_you.html"
 >
-
->
-<input type="hidden" name="redirect" value="/thank_you.html">
+  <input type="hidden" name="form-name" value="contact">
+  <input type="hidden" name="redirect" value="/thank_you.html">
 
   <input type="text" name="fullname" placeholder="Full Name *" required>
   <input type="email" name="email" placeholder="Email Address *" required>
@@ -161,6 +159,7 @@
 
   <button type="submit">Start Your Project</button>
 </form>
+
 
   </section>
 
@@ -217,6 +216,7 @@
 
 </body>
 </html>
+
 
 
 
