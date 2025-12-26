@@ -120,13 +120,14 @@
   <!-- Contact Form Section -->
   <section class="contact-section">
     <h2>Contact Form</h2>
-   <form
+<form
   name="contact"
   method="POST"
   data-netlify="true"
-  action="/thank_you.html"
+  netlify-honeypot="bot-field"
 >
   <input type="hidden" name="form-name" value="contact">
+<input type="hidden" name="redirect" value="/thank_you.html">
 
   <input type="text" name="fullname" placeholder="Full Name *" required>
   <input type="email" name="email" placeholder="Email Address *" required>
@@ -214,6 +215,7 @@
 
 </body>
 </html>
+
 
 
 
