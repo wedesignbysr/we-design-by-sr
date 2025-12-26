@@ -1,5 +1,0 @@
-[[redirects]]
-  from = "/thank_you.html"
-  to = "/thank_you.html"
-  status = 200
-  force = true
